@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Codex UI Session Delete",
+    "description": "Restores the “Delete conversation” row in Codex UI's session menu: this plugin provides remote.workspaceRegistry.deleteSession and ships its own Host delete engine derived from better-dsh-session-deletetool, so it works on its own; a family-tree confirmation appears when the conversation has subagents or forked conversations."
+  }
+}

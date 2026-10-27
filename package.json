@@ -1,0 +1,59 @@
+{
+  "name": "dsh-codex-session-deletetool",
+  "version": "0.2.0",
+  "type": "module",
+  "description": "Real conversation delete for the Codex UI sidebar: provides remote.workspaceRegistry.deleteSession so @michengai/dsh-codex-ui's own session menu grows its 删除会话 row, restores the row's ⋯ button, and asks before removing a conversation that carries subagent sessions or forked conversations. Ships its own Host delete engine derived from better-dsh-session-deletetool, so it works on its own. / 给 Codex UI 侧边栏补上真正的删除对话：提供 remote.workspaceRegistry.deleteSession，让 Codex UI 自己的会话菜单重新出现「删除会话」，同时修好会话行上被隐藏的「⋯」按钮；会话带着子智能体或派生对话时会先弹家族树确认。内置改编自 better-dsh-session-deletetool 的 Host 删除引擎，可独立工作。",
+  "license": "MIT",
+  "author": "memoryovo",
+  "icon": "./icon.svg",
+  "meta": {
+    "title": "Codex UI 会话删除 / Codex UI Session Delete",
+    "description": "给 Codex UI 的会话菜单补回「删除会话」：不是归档隐藏，而是删掉会话日志、工程记录与投影缓存；会话带着子智能体会话或派生对话时，先按层级列出来让你勾选，运行中的工作也会标出来。顺手修好被 Codex UI 自己藏掉的「⋯」按钮，右键与三个小点两条路都能调出同一个菜单。"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "codex-ui",
+    "session",
+    "conversation",
+    "delete"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/memoryovo/dsh-codex-session-deletetool.git"
+  },
+  "homepage": "https://github.com/memoryovo/dsh-codex-session-deletetool#readme",
+  "bugs": {
+    "url": "https://github.com/memoryovo/dsh-codex-session-deletetool/issues"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "host.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  }
+}

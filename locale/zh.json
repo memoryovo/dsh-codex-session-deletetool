@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Codex UI 会话删除 / Codex UI Session Delete",
+    "description": "在 Codex UI 的会话菜单里恢复「删除会话」：本插件提供 remote.workspaceRegistry.deleteSession，并内置改编自 better-dsh-session-deletetool 的 Host 删除引擎（可独立工作）；会话带着子智能体或派生对话时先弹家族树确认。"
+  }
+}
