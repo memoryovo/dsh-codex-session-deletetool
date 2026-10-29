@@ -1,14 +1,14 @@
 {
   "name": "dsh-codex-session-deletetool",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
-  "description": "Real conversation delete for the Codex UI sidebar: provides remote.workspaceRegistry.deleteSession so @michengai/dsh-codex-ui's own session menu grows its 删除会话 row, restores the row's ⋯ button, and asks before removing a conversation that carries subagent sessions or forked conversations. Ships its own Host delete engine derived from better-dsh-session-deletetool, so it works on its own. / 给 Codex UI 侧边栏补上真正的删除对话：提供 remote.workspaceRegistry.deleteSession，让 Codex UI 自己的会话菜单重新出现「删除会话」，同时修好会话行上被隐藏的「⋯」按钮；会话带着子智能体或派生对话时会先弹家族树确认。内置改编自 better-dsh-session-deletetool 的 Host 删除引擎，可独立工作。",
+  "description": "Codex UI 1.1.49 frozen inside one self-contained plugin, with real conversation delete: the 1.1.49 sidebar (Apache-2.0) is vendored so no upstream update can change it, the package provides remote.workspaceRegistry.deleteSession so the session menu grows its 删除会话 row, it restores the row's ⋯ button, and it asks with a family tree before removing a conversation that carries subagent sessions or forked conversations. The Host delete engine is derived from better-dsh-session-deletetool (MIT). No dependency on the @michengai/dsh-codex-ui package at install time. / 把 Codex UI 1.1.49 冻结进插件：侧栏代码内置，上游更新不会再把界面换掉；同时补上真正的删除对话——提供 remote.workspaceRegistry.deleteSession 让会话菜单出现「删除会话」，修好被隐藏的「⋯」按钮，会话带着子智能体或派生对话时先弹家族树勾选。Host 删除引擎改编自 better-dsh-session-deletetool，安装时不再依赖 codex-ui 包。",
   "license": "MIT",
   "author": "memoryovo",
   "icon": "./icon.svg",
   "meta": {
-    "title": "Codex UI 会话删除 / Codex UI Session Delete",
-    "description": "给 Codex UI 的会话菜单补回「删除会话」：不是归档隐藏，而是删掉会话日志、工程记录与投影缓存；会话带着子智能体会话或派生对话时，先按层级列出来让你勾选，运行中的工作也会标出来。顺手修好被 Codex UI 自己藏掉的「⋯」按钮，右键与三个小点两条路都能调出同一个菜单。"
+    "title": "Codex UI 会话删除（内置 1.1.49 界面）/ Codex UI Session Delete (bundled 1.1.49)",
+    "description": "一个插件同时给你两件事：冻结在 1.1.49 的 Codex UI 侧栏，以及真正能用的删除会话。删除不是归档隐藏，而是删掉会话日志、工程记录与投影缓存；会话带着子智能体会话或派生对话时，先按层级列出来让你勾选，运行中的工作也会标出来。右键与三个小点两条路都能调出同一个菜单。因为界面代码就在插件里，卸载 codex-ui 也不会影响它。"
   },
   "keywords": [
     "deepseek-harness",
@@ -38,6 +38,9 @@
     "index.js",
     "host.js",
     "client.js",
+    "src",
+    "scripts",
+    "vendor",
     "cordis.patch.yml",
     "locale/*.json",
     "icon.svg",
@@ -54,7 +57,13 @@
       "platform": "web",
       "immediately": true,
       "inject": [
-        "@deepseek-ai/dsh-client-locale"
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-input-trigger",
+        "@deepseek-ai/dsh-client-ui-workspace",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-connection"
       ]
     }
   }

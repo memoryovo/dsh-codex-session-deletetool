@@ -1,0 +1,3 @@
+# The vendored Codex UI files are byte-identical copies of the published
+# package; never let Git rewrite their line endings.
+vendor/codex-ui/* -text
