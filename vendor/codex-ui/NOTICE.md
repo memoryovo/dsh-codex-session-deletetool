@@ -30,11 +30,12 @@ The shipped bundle differs from upstream in exactly two ways, both applied by
 step from that script:
 
 1. **Unused navigation removed.** 专家 / 技能 / 连接器 / 定时任务 / IM 助理 are
-   hard-coded buttons in the 扩展管理 panel and in the collapsed rail, not
-   slot-driven, so the only way to take them out is to drop them. The build
-   deletes those JSX entries (lines 8301–8316, 8325–8346, 8456–8473, 8483–8507
-   of the vendored file, pinned by range and anchored by a text check that fails
-   the build if the file ever shifts).
+   hard-coded buttons in the 扩展管理 panel and in the collapsed rail, and they
+   also appear as entries in the search palette; none of them is slot-driven, so
+   the only way to take them out is to drop them. The build deletes those entries
+   (lines 7713–7732, 7753–7782, 8301–8316, 8325–8346, 8456–8473, 8483–8507 of the
+   vendored file, pinned by range and anchored by a text check that fails the
+   build if the file ever shifts).
 2. **The empty 最近 section is marked, not deleted.** 最近 only lists sessions
    that belong to no project; the build adds `data-empty` to that section and
    this package's stylesheet hides it while it holds no row, so an empty

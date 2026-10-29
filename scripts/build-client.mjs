@@ -39,10 +39,12 @@ const outPath = join(root, 'client.js')
  * build fail loudly instead of silently shipping the wrong bundle.
  */
 const TRIMS = [
-  { note: '扩展管理：专家 / 技能', from: 8301, to: 8316, anchor: 'selectExternalSection(t("sidebar.skills"))' },
-  { note: '扩展管理：连接器 / 定时任务 / IM 助理', from: 8325, to: 8346, anchor: 'onClick: openImSettings' },
-  { note: '折叠栏：专家 / 技能', from: 8456, to: 8473, anchor: 'selectExternalSection(t("sidebar.skills"))' },
-  { note: '折叠栏：连接器 / 定时任务 / IM 助理', from: 8483, to: 8507, anchor: 'onClick: openImSettings' },
+  { note: '扩展管理：专家 / 技能', from: 8301, to: 8316, anchor: 'selectExternalSection(t("sidebar.skills"))', first: '/* @__PURE__ */', last: '}),' },
+  { note: '扩展管理：连接器 / 定时任务 / IM 助理', from: 8325, to: 8346, anchor: 'onClick: openImSettings', first: '/* @__PURE__ */', last: '}),' },
+  { note: '折叠栏：专家 / 技能', from: 8456, to: 8473, anchor: 'selectExternalSection(t("sidebar.skills"))', first: '/* @__PURE__ */', last: '}),' },
+  { note: '折叠栏：连接器 / 定时任务 / IM 助理', from: 8483, to: 8507, anchor: 'onClick: openImSettings', first: '/* @__PURE__ */', last: '}),' },
+  { note: '搜索面板：专家 / 技能', from: 7713, to: 7732, anchor: 'selectExternalSection(t("sidebar.skills"))', first: '{', last: '},' },
+  { note: '搜索面板：连接器 / 定时任务 / IM 助理', from: 7753, to: 7782, anchor: 'openImSettings', first: '{', last: '},' },
 ]
 
 /**
@@ -60,11 +62,11 @@ function trimUnusedNavigation(source) {
     if (!slice.join('\n').includes(trim.anchor)) {
       throw new Error(`${trim.note}: anchor ${trim.anchor} not found in lines ${trim.from}-${trim.to}`)
     }
-    if (!first.startsWith('/* @__PURE__ */')) {
-      throw new Error(`${trim.note}: line ${trim.from} is not the start of a JSX element`)
+    if (!first.startsWith(trim.first)) {
+      throw new Error(`${trim.note}: line ${trim.from} does not start with ${trim.first}`)
     }
-    if (last !== '}),') {
-      throw new Error(`${trim.note}: line ${trim.to} is not the end of a JSX element`)
+    if (last !== trim.last) {
+      throw new Error(`${trim.note}: line ${trim.to} does not end with ${trim.last}`)
     }
     for (let line = trim.from; line <= trim.to; line += 1) drop.add(line)
   }

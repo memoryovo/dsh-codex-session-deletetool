@@ -1,6 +1,6 @@
 {
   "name": "dsh-codex-session-deletetool",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "type": "module",
   "description": "Codex UI 1.1.49 frozen inside one self-contained plugin, with real conversation delete: the 1.1.49 sidebar (Apache-2.0) is vendored so no upstream update can change it, the package provides remote.workspaceRegistry.deleteSession so the session menu grows its 删除会话 row, it restores the row's ⋯ button, and it asks with a family tree before removing a conversation that carries subagent sessions or forked conversations. The Host delete engine is derived from better-dsh-session-deletetool (MIT). No dependency on the @michengai/dsh-codex-ui package at install time. / 把 Codex UI 1.1.49 冻结进插件：侧栏代码内置，上游更新不会再把界面换掉；同时补上真正的删除对话——提供 remote.workspaceRegistry.deleteSession 让会话菜单出现「删除会话」，修好被隐藏的「⋯」按钮，会话带着子智能体或派生对话时先弹家族树勾选。Host 删除引擎改编自 better-dsh-session-deletetool，安装时不再依赖 codex-ui 包。",
   "license": "MIT",

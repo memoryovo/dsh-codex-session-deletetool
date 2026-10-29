@@ -7724,26 +7724,6 @@ html[data-dcu-official-turn-navigator-supported=true] .dcu-turn-navigator,html:h
 						}
 					},
 					{
-						id: "settings:experts",
-						group: "settings",
-						label: t("sidebar.experts"),
-						keywords: t("search.settings"),
-						run: () => {
-							onClose();
-							selectExternalSection(t("sidebar.experts"));
-						}
-					},
-					{
-						id: "settings:skills",
-						group: "settings",
-						label: t("sidebar.skills"),
-						keywords: t("search.settings"),
-						run: () => {
-							onClose();
-							selectExternalSection(t("sidebar.skills"));
-						}
-					},
-					{
 						id: "settings:plugins",
 						group: "settings",
 						label: t("sidebar.plugins"),
@@ -7761,36 +7741,6 @@ html[data-dcu-official-turn-navigator-supported=true] .dcu-turn-navigator,html:h
 						run: () => {
 							onClose();
 							openSettingsSection(settingsSeat.current, t("settings.pluginConfig"));
-						}
-					},
-					{
-						id: "settings:connectors",
-						group: "settings",
-						label: t("sidebar.connectors"),
-						keywords: t("search.settings"),
-						run: () => {
-							onClose();
-							selectSection(t("sidebar.connectors"));
-						}
-					},
-					{
-						id: "settings:schedule",
-						group: "settings",
-						label: t("sidebar.schedule"),
-						keywords: t("search.settings"),
-						run: () => {
-							onClose();
-							selectExternalSection(t("sidebar.schedule"));
-						}
-					},
-					{
-						id: "settings:assistant",
-						group: "settings",
-						label: t("sidebar.assistant"),
-						keywords: t("search.settings"),
-						run: () => {
-							onClose();
-							openImSettings();
 						}
 					},
 					{
