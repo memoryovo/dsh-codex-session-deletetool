@@ -25,8 +25,8 @@
 ## Changes made to the bundled code
 
 The vendored files on disk stay byte-identical to the published 1.1.49 package.
-The shipped bundle differs from upstream in exactly two ways, both applied by
-`scripts/build-client.mjs` and both reversible by deleting the corresponding
+The shipped bundle differs from upstream in exactly three ways, all applied by
+`scripts/build-client.mjs` and all reversible by deleting the corresponding
 step from that script:
 
 1. **Unused navigation removed.** 专家 / 技能 / 连接器 / 定时任务 / IM 助理 are
@@ -40,6 +40,12 @@ step from that script:
    that belong to no project; the build adds `data-empty` to that section and
    this package's stylesheet hides it while it holds no row, so an empty
    placeholder stays out of the sidebar without ever hiding a real session.
+3. **The upstream settings page is removed.** Upstream registers its own
+   `settings.section` (label `Codex UI`) whose body is an about page plus a
+   "配套管理插件" manager that offers to install the author's other plugins.
+   This fork deletes that registration (lines 12314–12320), its search-palette
+   entry (7783–7792) and the manager block inside the body (8906–9028), so the
+   settings window only lists DSH's own sections.
 
 Everything else this repository adds lives in `src/`, `host.js`, `index.js` and
 `scripts/`, and reaches the frozen UI only through its public seams: the

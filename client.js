@@ -7743,16 +7743,6 @@ html[data-dcu-official-turn-navigator-supported=true] .dcu-turn-navigator,html:h
 							openSettingsSection(settingsSeat.current, t("settings.pluginConfig"));
 						}
 					},
-					{
-						id: "settings:about",
-						group: "settings",
-						label: t("about.nav"),
-						keywords: t("search.settings"),
-						run: () => {
-							onClose();
-							selectSection(t("about.nav"));
-						}
-					}
 				];
 				return [
 					...sessionEntries,
@@ -8785,129 +8775,6 @@ html[data-dcu-official-turn-navigator-supported=true] .dcu-turn-navigator,html:h
 							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("li", { children: t("about.feature.navigator") })
 						]
 					}),
-					/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-						className: "dcu-about-dependencies-heading",
-						children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("h3", { children: t("about.dependencies") }), state === "ready" && actionableCount > 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
-							className: "dcu-about-install dcu-about-update-all",
-							type: "button",
-							"aria-busy": installing === "all",
-							disabled: installing !== void 0,
-							onClick: () => {
-								updateAll();
-							},
-							children: [installing === "all" ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(IconLoadingOutlineMedium, { size: 14 }) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(IconDownloadOutlineMedium, { size: 14 }), installing === "all" ? t("about.updatingAll") : t("about.updateAll")]
-						})]
-					}),
-					/* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
-						className: "dcu-about-intro",
-						children: t("about.dependenciesDescription")
-					}),
-					state === "loading" ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
-						className: "dcu-about-message",
-						role: "status",
-						children: t("about.loading")
-					}) : state === "failed" ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
-						className: "dcu-about-message",
-						"data-error": "true",
-						role: "alert",
-						children: t(businessRequestErrorKey(loadFailure) ?? "about.statusFailed")
-					}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
-						className: "dcu-about-dependencies",
-						"aria-busy": installing !== void 0,
-						children: dependencies.map((dependency) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("article", {
-							className: "dcu-about-dependency",
-							children: [
-								/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-									className: "dcu-about-copy",
-									children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-										className: "dcu-about-name-row",
-										children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("a", {
-											className: "dcu-about-name dcu-about-project-link",
-											href: PROJECT_HOMEPAGES[dependency.id],
-											target: "_blank",
-											rel: "noreferrer",
-											children: title(dependency.id)
-										}), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("a", {
-											className: "dcu-about-downloads",
-											href: `https://www.npmjs.com/package/${dependency.packageName}`,
-											target: "_blank",
-											rel: "noreferrer",
-											title: t("about.downloadsSource"),
-											"aria-label": `${dependency.packageName} · ${t("about.totalDownloads")} · ${typeof dependency.totalDownloads === "number" && Number.isSafeInteger(dependency.totalDownloads) && dependency.totalDownloads >= 0 ? dependency.totalDownloads.toLocaleString() : t("about.downloadsUnavailable")}`,
-											children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(IconDownloadOutlineMedium, {
-												size: 12,
-												"aria-hidden": "true"
-											}), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-												className: "dcu-about-downloads-count",
-												children: typeof dependency.totalDownloads === "number" && Number.isSafeInteger(dependency.totalDownloads) && dependency.totalDownloads >= 0 ? dependency.totalDownloads.toLocaleString() : "—"
-											})]
-										})]
-									}), /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-										className: "dcu-about-package",
-										title: dependency.packageName,
-										children: [
-											/* @__PURE__ */ (0, react_jsx_runtime.jsx)("a", {
-												className: "dcu-about-project-link",
-												href: PROJECT_HOMEPAGES[dependency.id],
-												target: "_blank",
-												rel: "noreferrer",
-												children: dependency.packageName
-											}),
-											dependency.version === void 0 ? "" : ` · ${dependency.version}`,
-											dependency.updateAvailable && dependency.latestVersion !== void 0 ? ` → ${dependency.latestVersion}` : ""
-										]
-									})]
-								}),
-								/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-									className: "dcu-about-status",
-									"data-installed": dependency.installed,
-									"data-update": dependency.updateAvailable,
-									children: [dependency.installed && !dependency.updateAvailable && /* @__PURE__ */ (0, react_jsx_runtime.jsx)(IconCheckOutlineMedium, { size: 14 }), dependency.updateAvailable ? t("about.updateAvailable") : dependency.installed ? t("about.installed") : t("about.missing")]
-								}),
-								(!dependency.installed || dependency.updateAvailable) && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
-									className: "dcu-about-install",
-									type: "button",
-									disabled: installing !== void 0,
-									onClick: () => {
-										install(dependency.id);
-									},
-									children: [installing === dependency.id ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)(IconLoadingOutlineMedium, { size: 14 }) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)(IconDownloadOutlineMedium, { size: 14 }), installing === dependency.id ? t("about.installing") : dependency.updateAvailable ? t("about.update") : t("about.install")]
-								})
-							]
-						}, dependency.id))
-					}),
-					installing !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-						className: "dcu-about-progress",
-						role: "status",
-						children: [
-							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", { children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)(IconLoadingOutlineMedium, { size: 14 }) }),
-							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("code", { children: progress === void 0 ? t("about.progressHint") : progressLabel(progress, t) }),
-							progress?.percent !== null && progress?.percent !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("span", {
-								className: "dcu-about-progress-pct",
-								children: [progress.percent, "%"]
-							}),
-							/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
-								className: "dcu-about-progress-bar",
-								children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
-									className: "dcu-about-progress-fill",
-									"data-wave": progress?.percent === null || progress?.percent === void 0,
-									style: progress?.percent === null || progress?.percent === void 0 ? void 0 : { width: `${progress.percent}%` }
-								})
-							})
-						]
-					}),
-					refreshFailed && state === "ready" && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
-						className: "dcu-about-message",
-						"data-error": "true",
-						role: "status",
-						children: t(businessRequestErrorKey(loadFailure) ?? "about.refreshFailed")
-					}),
-					message !== void 0 && /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
-						className: "dcu-about-message",
-						"data-error": message.error,
-						role: message.error ? "alert" : "status",
-						children: message.text
-					})
 				]
 			});
 		}
@@ -12193,13 +12060,6 @@ html[data-dsh-native-backdrop=mica] .dcu-settings-page,html[data-dsh-native-back
 					t
 				})
 			}, ConnectorsSection));
-			ctx.slots.inject("settings.section", () => ctx.slots.register({
-				name: "settings.section",
-				id: "about",
-				order: Number.MAX_SAFE_INTEGER,
-				label: () => t("about.nav"),
-				locale: NS
-			}, AboutSection));
 		}
 		//#endregion
 		exports.apply = apply;

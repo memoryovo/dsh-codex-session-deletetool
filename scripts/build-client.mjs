@@ -45,6 +45,9 @@ const TRIMS = [
   { note: '折叠栏：连接器 / 定时任务 / IM 助理', from: 8483, to: 8507, anchor: 'onClick: openImSettings', first: '/* @__PURE__ */', last: '}),' },
   { note: '搜索面板：专家 / 技能', from: 7713, to: 7732, anchor: 'selectExternalSection(t("sidebar.skills"))', first: '{', last: '},' },
   { note: '搜索面板：连接器 / 定时任务 / IM 助理', from: 7753, to: 7782, anchor: 'openImSettings', first: '{', last: '},' },
+  { note: '关于页：配套管理插件（安装列表 / 进度 / 结果提示）', from: 8906, to: 9028, anchor: 'about.dependenciesDescription', first: '/* @__PURE__ */', last: '})' },
+  { note: '搜索面板：关于 Codex UI', from: 7783, to: 7792, anchor: 'settings:about', first: '{', last: '}' },
+  { note: '设置页：Codex UI 关于页签注册', from: 12314, to: 12320, anchor: 'id: "about"', first: 'ctx.slots.inject', last: '}, AboutSection));' },
 ]
 
 /**
