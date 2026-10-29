@@ -1,12 +1,12 @@
 /**
- * dsh-codex-session-deletetool — Host half.
+ * dsh-codex-ui-classic — Host half.
  *
  * Two Host halves are mounted from this one row:
  *
  * 1. `./host.js` — this package's delete engine, derived from
  *    better-dsh-session-deletetool (MIT, see host.js): `GET
- *    /dsh-codex-session-deletetool/inspect` reports a Session's state and its
- *    descendant family, `POST /dsh-codex-session-deletetool/delete` removes the
+ *    /dsh-codex-ui-classic/inspect` reports a Session's state and its
+ *    descendant family, `POST /dsh-codex-ui-classic/delete` removes the
  *    Session and the descendants the user ticked.
  * 2. `./vendor/codex-ui/host.mjs` — the frozen @michengai/dsh-codex-ui 1.1.49
  *    Host half (Apache-2.0, see vendor/codex-ui/NOTICE.md), which serves the

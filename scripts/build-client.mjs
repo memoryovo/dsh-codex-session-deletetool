@@ -11,7 +11,7 @@
  *     client.js = banner + vendor/codex-ui/client.js + src/client.js
  *
  * The vendored bundle registers itself as `@michengai/dsh-codex-ui`; the module
- * after it registers as `dsh-codex-session-deletetool` and materializes the
+ * after it registers as `dsh-codex-ui-classic` and materializes the
  * former with a plain `require('@michengai/dsh-codex-ui')`, then hands it the
  * same Client context in `apply`. The result is the 1.1.49 sidebar and this
  * package's delete feature in one plugin, with no dependency on the upstream
@@ -104,7 +104,7 @@ const upstreamVersion = JSON.parse(
 ).version
 
 const banner = `/*!
- * dsh-codex-session-deletetool — generated Client bundle. Do not edit.
+ * dsh-codex-ui-classic — generated Client bundle. Do not edit.
  *
  * Built by scripts/build-client.mjs from:
  *   vendor/codex-ui/client.js  — @michengai/dsh-codex-ui ${upstreamVersion} (Apache-2.0, see vendor/codex-ui/NOTICE.md),

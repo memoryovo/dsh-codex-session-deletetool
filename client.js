@@ -1,5 +1,5 @@
 /*!
- * dsh-codex-session-deletetool — generated Client bundle. Do not edit.
+ * dsh-codex-ui-classic — generated Client bundle. Do not edit.
  *
  * Built by scripts/build-client.mjs from:
  *   vendor/codex-ui/client.js  — @michengai/dsh-codex-ui 1.1.49 (Apache-2.0, see vendor/codex-ui/NOTICE.md),
@@ -12070,7 +12070,7 @@ html[data-dsh-native-backdrop=mica] .dcu-settings-page,html[data-dsh-native-back
 });
 
 /**
- * dsh-codex-session-deletetool — Client half.
+ * dsh-codex-ui-classic — Client half.
  *
  * Why this package exists
  * -----------------------
@@ -12106,7 +12106,7 @@ html[data-dsh-native-backdrop=mica] .dcu-settings-page,html[data-dsh-native-back
  * so the two dialogs never stack and never fight over pointer events.
  */
 window.__ModuleLoader__.load({
-  id: 'dsh-codex-session-deletetool',
+  id: 'dsh-codex-ui-classic',
   factory(require) {
     const React = require('react')
     const h = React.createElement
@@ -12124,12 +12124,12 @@ window.__ModuleLoader__.load({
      */
     const codexUi = require('@michengai/dsh-codex-ui')
 
-    const NS = 'dsh-codex-session-deletetool'
+    const NS = 'dsh-codex-ui-classic'
     /** The Client service Codex UI probes before it shows its delete row. */
     const SERVICE_KEY = 'remote.workspaceRegistry'
     /** This package's own Host routes (same origin, same page). */
-    const DELETE_PATH = '/dsh-codex-session-deletetool/delete'
-    const INSPECT_PATH = '/dsh-codex-session-deletetool/inspect'
+    const DELETE_PATH = '/dsh-codex-ui-classic/delete'
+    const INSPECT_PATH = '/dsh-codex-ui-classic/inspect'
     /**
      * How long to wait before opening the family-tree dialog.
      *

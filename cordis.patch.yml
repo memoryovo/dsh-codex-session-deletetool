@@ -1,8 +1,8 @@
 # Inserts this plugin's Host row into the profile's layer stack.
 # The Host half mounts this package's own delete routes
-# (/dsh-codex-session-deletetool/{inspect,delete,catalog,delete-batch}); the
+# (/dsh-codex-ui-classic/{inspect,delete,catalog,delete-batch}); the
 # Client half provides the service Codex UI looks for and renders the
 # confirmation dialog.
 - insert:
-    - id: dsh-codex-session-deletetool
-      name: 'dsh-codex-session-deletetool'
+    - id: dsh-codex-ui-classic
+      name: 'dsh-codex-ui-classic'

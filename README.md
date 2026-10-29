@@ -1,9 +1,11 @@
-# dsh-codex-session-deletetool
+# dsh-codex-ui-classic
 
 **一个插件，两件事：把 Codex UI 1.1.49 的侧边栏冻结进来，并补上真正能用的「删除会话」。**
 
 界面代码就在这个包里，装好之后不再依赖 `@michengai/dsh-codex-ui`；上游发什么新版都换不掉你现在的样子。
 删除也不是归档隐藏——删掉的是会话日志、工程记录与投影缓存。
+
+名字里的 `classic` 指的就是这一版界面：它冻在 1.1.49，不会再跟着上游变。
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Bundled UI](https://img.shields.io/badge/bundled%20UI-Codex%20UI%201.1.49-blue)](vendor/codex-ui/NOTICE.md)
@@ -84,18 +86,18 @@ canDeleteSession: () => hasArchiveSessionDelete(ctx.get("remote.workspaceRegistr
 
 ### 从插件市场安装（推荐）
 
-在 DSH 的插件市场里搜 `dsh-codex-session-deletetool`。
+在 DSH 的插件市场里搜 `dsh-codex-ui-classic`。
 
 ### 从 GitHub 安装
 
 ```text
-plugin_manager action=install_bundle target=https://github.com/memoryovo/dsh-codex-session-deletetool
+plugin_manager action=install_bundle target=https://github.com/memoryovo/dsh-codex-ui-classic
 ```
 
 或者直接用发布包：
 
 ```text
-plugin_manager action=install_bundle target=https://github.com/memoryovo/dsh-codex-session-deletetool/releases/download/v0.3.0/dsh-codex-session-deletetool-0.3.0.tgz
+plugin_manager action=install_bundle target=https://github.com/memoryovo/dsh-codex-ui-classic/releases/download/v0.3.0/dsh-codex-ui-classic-0.3.0.tgz
 ```
 
 ### 本地目录安装
@@ -132,12 +134,12 @@ plugin_manager action=install_bundle target=<本仓库的绝对路径>
 client.js（一个 bundle，两个模块）
 ├─ @michengai/dsh-codex-ui   ← 内置 1.1.49 侧边栏
 │    └─ 会话菜单：canDeleteSession 为真时出现「删除会话」
-└─ dsh-codex-session-deletetool
+└─ dsh-codex-ui-classic
      ├─ provide('remote.workspaceRegistry', { deleteSession })
      ├─ 家族树弹窗（shell.overlay，order 62）
      └─ 样式：放出「⋯」、隐藏空的「最近」
 
-deleteSession(sessionId)  ── POST ──▶  /dsh-codex-session-deletetool/delete
+deleteSession(sessionId)  ── POST ──▶  /dsh-codex-ui-classic/delete
                                        └─ host.js：会话日志 / 工程记录 / 投影缓存
                                           然后 emit('api-session/removed')
 ```
@@ -147,7 +149,7 @@ Host 端只暴露四条同源 HTTP 路由（`inspect`、`delete`、`catalog`、`
 ## 目录结构
 
 ```text
-dsh-codex-session-deletetool/
+dsh-codex-ui-classic/
 ├─ client.js              # 构建产物：内置 bundle + 自有模块（勿手改）
 ├─ src/client.js          # 自有 Client 模块：服务、家族树弹窗、样式
 ├─ host.js                # Host 删除引擎与四条路由

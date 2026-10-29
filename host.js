@@ -1,12 +1,12 @@
 /**
- * dsh-codex-session-deletetool — Host half.
+ * dsh-codex-ui-classic — Host half.
  *
  * Derived from better-dsh-session-deletetool 0.5.3 by Lzcdebear
  * (https://github.com/Lzcdebear/better-dsh-session-deletetool, MIT). The delete
  * engine below — artifact removal, family gathering, the activity gate, the
  * workspace/checkpoint cleanup — is that plugin's work, carried over so this
  * package keeps working on its own instead of depending on another install.
- * The routes are renamed to `/dsh-codex-session-deletetool/*` so both plugins
+ * The routes are renamed to `/dsh-codex-ui-classic/*` so both plugins
  * can be enabled at the same time without colliding. The bulk surface
  * (`/catalog`, `/delete-batch`) is carried over as well and stays mounted: the
  * Codex UI entry point is one Session at a time and does not call it, but the
@@ -91,10 +91,10 @@ export const __test = globalThis.__DSD_TEST__ === true
   ? { buildCatalog, catalogSessions, normalizeRoots, workspaceLabel }
   : undefined
 
-const DELETE_PATH = '/dsh-codex-session-deletetool/delete'
-const INSPECT_PATH = '/dsh-codex-session-deletetool/inspect'
-const CATALOG_PATH = '/dsh-codex-session-deletetool/catalog'
-const BATCH_PATH = '/dsh-codex-session-deletetool/delete-batch'
+const DELETE_PATH = '/dsh-codex-ui-classic/delete'
+const INSPECT_PATH = '/dsh-codex-ui-classic/inspect'
+const CATALOG_PATH = '/dsh-codex-ui-classic/catalog'
+const BATCH_PATH = '/dsh-codex-ui-classic/delete-batch'
 
 /** Session ids are opaque strings, but never paths: keep them to safe segments. */
 const SESSION_ID = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,199}$/
@@ -146,45 +146,45 @@ class DeleteRefusal extends Error {
 export function apply(ctx) {
   const onDelete = (request, response) => {
     void serveDelete(ctx, request, response).catch((error) => {
-      ctx.logger?.warn?.(`[dsh-codex-session-deletetool] route failure: ${messageOf(error)}`)
+      ctx.logger?.warn?.(`[dsh-codex-ui-classic] route failure: ${messageOf(error)}`)
       send(response, 500, { ok: false, code: 'internal', message: messageOf(error) })
     })
   }
   const onInspect = (request, response) => {
     void serveInspect(ctx, request, response).catch((error) => {
-      ctx.logger?.warn?.(`[dsh-codex-session-deletetool] route failure: ${messageOf(error)}`)
+      ctx.logger?.warn?.(`[dsh-codex-ui-classic] route failure: ${messageOf(error)}`)
       send(response, 500, { ok: false, code: 'internal', message: messageOf(error) })
     })
   }
   const onCatalog = (request, response) => {
     void serveCatalog(ctx, request, response).catch((error) => {
-      ctx.logger?.warn?.(`[dsh-codex-session-deletetool] route failure: ${messageOf(error)}`)
+      ctx.logger?.warn?.(`[dsh-codex-ui-classic] route failure: ${messageOf(error)}`)
       send(response, 500, { ok: false, code: 'internal', message: messageOf(error) })
     })
   }
   const onBatch = (request, response) => {
     void serveBatch(ctx, request, response).catch((error) => {
-      ctx.logger?.warn?.(`[dsh-codex-session-deletetool] route failure: ${messageOf(error)}`)
+      ctx.logger?.warn?.(`[dsh-codex-ui-classic] route failure: ${messageOf(error)}`)
       send(response, 500, { ok: false, code: 'internal', message: messageOf(error) })
     })
   }
   ctx.effect(
     () => ctx.webServer.register({ kind: 'exact', path: DELETE_PATH, handler: onDelete }),
-    'dsh-codex-session-deletetool: delete route',
+    'dsh-codex-ui-classic: delete route',
   )
   ctx.effect(
     () => ctx.webServer.register({ kind: 'exact', path: INSPECT_PATH, handler: onInspect }),
-    'dsh-codex-session-deletetool: inspect route',
+    'dsh-codex-ui-classic: inspect route',
   )
   ctx.effect(
     () => ctx.webServer.register({ kind: 'exact', path: CATALOG_PATH, handler: onCatalog }),
-    'dsh-codex-session-deletetool: catalog route',
+    'dsh-codex-ui-classic: catalog route',
   )
   ctx.effect(
     () => ctx.webServer.register({ kind: 'exact', path: BATCH_PATH, handler: onBatch }),
-    'dsh-codex-session-deletetool: batch route',
+    'dsh-codex-ui-classic: batch route',
   )
-  ctx.logger?.info?.(`[dsh-codex-session-deletetool] routes mounted at ${DELETE_PATH}, ${INSPECT_PATH}, ${CATALOG_PATH} and ${BATCH_PATH}`)
+  ctx.logger?.info?.(`[dsh-codex-ui-classic] routes mounted at ${DELETE_PATH}, ${INSPECT_PATH}, ${CATALOG_PATH} and ${BATCH_PATH}`)
 }
 
 /**
@@ -334,7 +334,7 @@ async function serveBatch(ctx, request, response) {
       const refusal = error instanceof DeleteRefusal
         ? error
         : new DeleteRefusal(500, 'delete-failed', messageOf(error))
-      ctx.logger?.warn?.(`[dsh-codex-session-deletetool] batch ${root.sessionId}: ${refusal.code}: ${refusal.message}`)
+      ctx.logger?.warn?.(`[dsh-codex-ui-classic] batch ${root.sessionId}: ${refusal.code}: ${refusal.message}`)
       failed.push({ sessionId: root.sessionId, code: refusal.code, message: refusal.message })
     }
   }
@@ -1365,7 +1365,7 @@ function answer(ctx, response, error, sessionId) {
   const refusal = error instanceof DeleteRefusal
     ? error
     : new DeleteRefusal(500, 'delete-failed', messageOf(error))
-  ctx.logger?.warn?.(`[dsh-codex-session-deletetool] ${sessionId}: ${refusal.code}: ${refusal.message}`)
+  ctx.logger?.warn?.(`[dsh-codex-ui-classic] ${sessionId}: ${refusal.code}: ${refusal.message}`)
   send(response, refusal.status, { ok: false, code: refusal.code, message: refusal.message, ...refusal.details })
 }
 

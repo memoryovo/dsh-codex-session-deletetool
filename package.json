@@ -1,31 +1,32 @@
 {
-  "name": "dsh-codex-session-deletetool",
-  "version": "0.3.2",
+  "name": "dsh-codex-ui-classic",
+  "version": "0.4.0",
   "type": "module",
-  "description": "Codex UI 1.1.49 frozen inside one self-contained plugin, with real conversation delete: the 1.1.49 sidebar (Apache-2.0) is vendored so no upstream update can change it, the package provides remote.workspaceRegistry.deleteSession so the session menu grows its 删除会话 row, it restores the row's ⋯ button, and it asks with a family tree before removing a conversation that carries subagent sessions or forked conversations. The Host delete engine is derived from better-dsh-session-deletetool (MIT). No dependency on the @michengai/dsh-codex-ui package at install time. / 把 Codex UI 1.1.49 冻结进插件：侧栏代码内置，上游更新不会再把界面换掉；同时补上真正的删除对话——提供 remote.workspaceRegistry.deleteSession 让会话菜单出现「删除会话」，修好被隐藏的「⋯」按钮，会话带着子智能体或派生对话时先弹家族树勾选。Host 删除引擎改编自 better-dsh-session-deletetool，安装时不再依赖 codex-ui 包。",
+  "description": "The Codex UI 1.1.49 sidebar, frozen inside one self-contained plugin, plus a real conversation delete. The 1.1.49 UI (Apache-2.0) is vendored so no upstream release can change it, unused navigation is trimmed, the package provides remote.workspaceRegistry.deleteSession so the session menu grows its 删除会话 row, it restores the row's ⋯ button, and it asks with a family tree before removing a conversation that carries subagent sessions or forked conversations. The Host delete engine is derived from better-dsh-session-deletetool (MIT). No dependency on the @michengai/dsh-codex-ui package at install time. / 把 Codex UI 1.1.49 的界面冻结进插件：侧栏代码内置、用不到的导航裁掉，上游更新不会再把界面换掉；同时补上真正的删除对话——提供 remote.workspaceRegistry.deleteSession 让会话菜单出现「删除会话」，修好被隐藏的「⋯」按钮，会话带着子智能体或派生对话时先弹家族树勾选。Host 删除引擎改编自 better-dsh-session-deletetool，安装时不再依赖 codex-ui 包。",
   "license": "MIT",
   "author": "memoryovo",
   "icon": "./icon.svg",
   "meta": {
-    "title": "Codex UI 会话删除（内置 1.1.49 界面）/ Codex UI Session Delete (bundled 1.1.49)",
-    "description": "一个插件同时给你两件事：冻结在 1.1.49 的 Codex UI 侧栏，以及真正能用的删除会话。删除不是归档隐藏，而是删掉会话日志、工程记录与投影缓存；会话带着子智能体会话或派生对话时，先按层级列出来让你勾选，运行中的工作也会标出来。右键与三个小点两条路都能调出同一个菜单。因为界面代码就在插件里，卸载 codex-ui 也不会影响它。"
+    "title": "Codex UI 经典版（内置 1.1.49）/ Codex UI Classic (bundled 1.1.49)",
+    "description": "把 Codex UI 1.1.49 那一版界面冻结在插件里，上游怎么更新都换不掉；顺带给你真正能用的删除会话。删除不是归档隐藏，而是删掉会话日志、工程记录与投影缓存；会话带着子智能体会话或派生对话时，先按层级列出来让你勾选，运行中的工作也会标出来。右键与三个小点两条路都能调出同一个菜单。因为界面代码就在插件里，不装 codex-ui 也能跑。"
   },
   "keywords": [
     "deepseek-harness",
     "dsh",
     "dsh-plugin",
     "codex-ui",
+    "codex-ui-classic",
     "session",
     "conversation",
     "delete"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/memoryovo/dsh-codex-session-deletetool.git"
+    "url": "git+https://github.com/memoryovo/dsh-codex-ui-classic.git"
   },
-  "homepage": "https://github.com/memoryovo/dsh-codex-session-deletetool#readme",
+  "homepage": "https://github.com/memoryovo/dsh-codex-ui-classic#readme",
   "bugs": {
-    "url": "https://github.com/memoryovo/dsh-codex-session-deletetool/issues"
+    "url": "https://github.com/memoryovo/dsh-codex-ui-classic/issues"
   },
   "exports": {
     ".": "./index.js",
